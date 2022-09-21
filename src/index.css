@@ -5,12 +5,12 @@
     align-items: center;
 }
 
-#prewiev-textarea{
+#preview{
     margin-top: 3rem;
-    width: 60%;
+    
 }
 
-#editor-textarea{
-    width: 60%;
+#editor{
+    
     margin-top: 3rem;
 }

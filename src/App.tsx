@@ -10,8 +10,8 @@ const App:React.FC = () => {
   return (
     <div className="App">
       <h1 id='Title' className='text-center'>Markdown Prewiever</h1>
-      <Editor input={input} setinput={setinput}/>
-      <Prewiev output={output} setoutput={setoutput}/>
+      <Editor input={input} setoutput={setoutput}/>
+      <Prewiev output={output}/>
     </div>
   );
 }

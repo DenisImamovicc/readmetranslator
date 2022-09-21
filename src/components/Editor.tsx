@@ -1,30 +1,33 @@
 import React from 'react'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import { marked } from 'marked';
 
 interface Props {
   input: string;
-  setinput: React.Dispatch<React.SetStateAction<string>>
+  setoutput: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Editor: React.FC<Props> = ({ input, setinput }) => {
+const Editor: React.FC<Props> = ({ input,setoutput}) => {
 
   const parseInput = (input: string) => {
-    console.log(input);
+    const markedInput=marked.parse(input)
+    setoutput(markedInput)
+    console.log(markedInput);
   }
+
   return (
-    <div id='editor-textarea'>
+    <div>
       <FloatingLabel
-        controlId="floatingTextarea"
+        controlId="editor"
         label=""
         className="mb-3"
       >
         <Form.Control as="textarea"
           placeholder="Leave a comment here"
           name="editor-textarea"
-          id="editor"
-          value={input}
-          onChange={(e) => setinput(e.target.value)} />
+          
+          onChange={(e) => parseInput(e.target.value)} />
       </FloatingLabel>
     </div>
   )

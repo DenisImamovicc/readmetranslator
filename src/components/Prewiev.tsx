@@ -4,23 +4,21 @@ import Form from 'react-bootstrap/Form';
 
 interface Props {
   output: string;
-  setoutput: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Prewiev:React.FC<Props> = ({output,setoutput}) => {
+const Prewiev:React.FC<Props> = ({output}) => {
   return (
-    <div id='prewiev-textarea'>
+    <div>
         <FloatingLabel
-        controlId="floatingTextarea"
+        controlId="preview"
         label=""
         className="mb-3"
       >
         <Form.Control as="textarea" 
         placeholder="Leave a comment here" 
-        name="prewiev-textarea" 
-        id="prewiev"
+        name="preview-textarea" 
         value={output}
-        onChange={()=>output}
+        // onChange={()=>output}
         readOnly
         />
       </FloatingLabel>
