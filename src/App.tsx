@@ -4,7 +4,7 @@ import Editor from './components/Editor';
 import Prewiev from './components/Prewiev';
 
 const App:React.FC = () => {
-  const [input, setinput] = useState<string>("") 
+  const [input, setinput] = useState<string>("Hello") 
   const [output, setoutput] = useState<string>("")
 
   return (

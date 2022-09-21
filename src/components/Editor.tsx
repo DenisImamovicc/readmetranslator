@@ -10,8 +10,8 @@ interface Props {
 
 const Editor: React.FC<Props> = ({ input,setoutput}) => {
 
-  const parseInput = (input: string) => {
-    const markedInput=marked.parse(input)
+  const parseInput = (inputs: string) => {
+    const markedInput=marked.parse(inputs)
     setoutput(markedInput)
     console.log(markedInput);
   }
@@ -24,9 +24,8 @@ const Editor: React.FC<Props> = ({ input,setoutput}) => {
         className="mb-3"
       >
         <Form.Control as="textarea"
-          placeholder="Leave a comment here"
+          placeholder=""
           name="editor-textarea"
-          
           onChange={(e) => parseInput(e.target.value)} />
       </FloatingLabel>
     </div>
