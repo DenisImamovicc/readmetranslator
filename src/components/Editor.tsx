@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { marked } from 'marked';
@@ -8,16 +8,20 @@ interface Props {
   setoutput: React.Dispatch<React.SetStateAction<string>>
 }
 
+marked.setOptions({breaks: true,});
+
 const Editor: React.FC<Props> = ({ input,setoutput}) => {
+  useEffect(() => {
+    parseInput(input)
+  }, [])
 
   const parseInput = (inputs: string) => {
     const markedInput=marked.parse(inputs)
     setoutput(markedInput)
-    console.log(markedInput);
+    // console.log(markedInput);
   }
-
   return (
-    <div>
+    <>
       <FloatingLabel
         controlId="editor"
         label=""
@@ -26,9 +30,11 @@ const Editor: React.FC<Props> = ({ input,setoutput}) => {
         <Form.Control as="textarea"
           placeholder=""
           name="editor-textarea"
-          onChange={(e) => parseInput(e.target.value)} />
+          onChange={(e) => parseInput(e.target.value)}
+          defaultValue={input}>
+          </Form.Control>
       </FloatingLabel>
-    </div>
+    </>
   )
 }
 export default Editor;
