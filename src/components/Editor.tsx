@@ -25,8 +25,8 @@ const Editor: React.FC<Props> = ({ input,setoutput}) => {
       <FloatingLabel
         controlId="editor"
         label=""
-        className="mb-3"
-      >
+        className="mainBox"
+        >
         <Form.Control as="textarea"
           placeholder=""
           name="editor-textarea"
