@@ -5,14 +5,13 @@ import Prewiev from './components/Prewiev';
 import { text } from './defaulttextVar';
 
 const App: React.FC = () => {
-  const [input, setinput] = useState<string>(text)
-  const [output, setoutput] = useState<string>("")
+  const [output, setoutput] = useState<string>(text)
 
   return (
     <div className="App">
       <h1 id='Title' className='text-center'>Markdown Prewiever</h1>
       <main id='main'>
-        <Editor input={input} setoutput={setoutput} />
+        <Editor setoutput={setoutput} output={output}/>
         <Prewiev output={output} />
       </main>
     </div>

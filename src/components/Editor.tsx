@@ -4,15 +4,16 @@ import Form from 'react-bootstrap/Form';
 import { marked } from 'marked';
 
 interface Props {
-  input: string;
+  output: string;
   setoutput: React.Dispatch<React.SetStateAction<string>>
+
 }
 //Enables <br> on marked library on enter keyinput.
 marked.setOptions({ breaks: true, });
 
-const Editor: React.FC<Props> = ({ input, setoutput }) => {
+const Editor: React.FC<Props> = ({setoutput,output }) => {
   useEffect(() => {
-    parseInput(input)
+    parseInput(output)
   }, [])
 
   const parseInput = (inputs: string) => {
@@ -31,7 +32,7 @@ const Editor: React.FC<Props> = ({ input, setoutput }) => {
           placeholder=""
           name="editor-textarea"
           onChange={(e) => parseInput(e.target.value)}
-          defaultValue={input}>
+          defaultValue={output}>
         </Form.Control>
       </FloatingLabel>
     </>
