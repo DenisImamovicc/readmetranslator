@@ -7,7 +7,7 @@ interface Props {
   input: string;
   setoutput: React.Dispatch<React.SetStateAction<string>>
 }
-
+//Enables <br> on marked library on enter keyinput.
 marked.setOptions({breaks: true,});
 
 const Editor: React.FC<Props> = ({ input,setoutput}) => {
