@@ -5,7 +5,7 @@ interface Props {
   output: any;
 }
 
-const Prewiev:React.FC<Props> = ({output}) => {
+const Prewiev: React.FC<Props> = ({ output }) => {
   return (
     <div id='preview'>
       {parse(output)}
