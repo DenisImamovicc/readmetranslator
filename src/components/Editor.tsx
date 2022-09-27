@@ -1,26 +1,38 @@
-import React, { useEffect} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import { marked } from 'marked';
+import { FaTrashAlt } from 'react-icons/fa';
 
 interface Props {
-  output: string;
   setoutput: React.Dispatch<React.SetStateAction<string>>
-
+  setinput: React.Dispatch<React.SetStateAction<string>>
+  output: string;
+  input: string;
 }
 //Enables <br> on marked library on enter keyinput.
 marked.setOptions({ breaks: true, });
 
-const Editor: React.FC<Props> = ({setoutput,output }) => {
+const Editor: React.FC<Props> = ({ setoutput, setinput, output, input }) => {
+
   useEffect(() => {
-    parseInput(output)
+    handleInputAndOutput(output)
   }, [])
 
-  const parseInput = (inputs: string) => {
-    const markedInput = marked.parse(inputs)
-    setoutput(markedInput)
-    // console.log(markedInput);
+  const handleInputAndOutput = (inputs: string) => {
+    setinput(inputs)
+    displayOutput(inputs)
   }
+
+  const displayOutput = (inputs: string) => setoutput(marked.parse(inputs))
+
+  const handleDeleteAllText = () => {
+    setoutput("")
+    setinput("")
+    console.log("text delete");
+  }
+
   return (
     <>
       <FloatingLabel
@@ -28,12 +40,14 @@ const Editor: React.FC<Props> = ({setoutput,output }) => {
         label=""
         className="mainBox"
       >
-        <h2 className='sub-title'>Put markdown text here:</h2>
+        <div>
+          <h2 className='sub-title'>Put markdown text here:</h2>
+          <Button onClick={handleDeleteAllText} variant="outline-light" size="sm" className='mb-1' title="Delete all text"><FaTrashAlt /></Button>
+        </div>
         <Form.Control as="textarea"
-          placeholder=""
           name="editor-textarea"
-          onChange={(e) => parseInput(e.target.value)}
-          defaultValue={output}>
+          onChange={(e) => handleInputAndOutput(e.target.value)}
+          value={input}>
         </Form.Control>
       </FloatingLabel>
     </>
