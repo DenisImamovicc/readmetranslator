@@ -28,6 +28,7 @@ const Editor: React.FC<Props> = ({setoutput,output }) => {
         label=""
         className="mainBox"
       >
+        <h2 className='sub-title'>Put markdown text here:</h2>
         <Form.Control as="textarea"
           placeholder=""
           name="editor-textarea"
