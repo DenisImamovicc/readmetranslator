@@ -30,6 +30,26 @@ img{
     max-width: 100%;
 }
 
+blockquote {
+    margin: revert!important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+    border-color: initial!important;
+    border-style: solid!important;
+    border-width: initial!important;
+}
+
+pre {
+    background-color: black!important;
+    color: deeppink!important;
+    border-radius: inherit!important;
+}
+
+code {
+    background-color: black!important;
+}
+
 @media screen and (min-width: 650px) {
     main{
         display: flex;
